@@ -1,0 +1,28 @@
+{ 
+	"id": "https://official-sounding.com/derbyJSON/root.json#",
+	"$schema": "http://json-schema.org/draft-04/schema#",
+	"type": "object",
+	"properties" : {
+			"version" : { "type": "string" },
+			"metadata": {},
+			"type": { "type": "string" },
+			"teams": {},
+			"periods": {},
+			"ruleset": {},
+			"venue": {},
+			"uuid": { "type": "array", "items": {} },
+			"notes": { "type": "array", "items": {} },
+			"date": {},
+			"time": {},
+			"end_time": {},
+			"leagues": {},
+			"timers": {},
+			"tournament": { "type": "string"},
+			"host-league": {},
+			"explusions": { "type": "array", "items": {} },
+			"suspensions": { "type": "array", "items": {} },
+			"signarues": { "type": "array", "items": {} },
+			"sanctioned": { "type": "boolean" },
+			"association": { "type": "string", "defualt": "WFTDA" }
+	}
+}

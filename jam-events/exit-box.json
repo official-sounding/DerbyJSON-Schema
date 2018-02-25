@@ -1,0 +1,22 @@
+{
+    "id": "https://official-sounding.com/derbyJSON/jam-events/exit-box.json#",
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "title": "Exit Box",
+    "description": "Represents the moment a skater leaves the box.",
+    "$comment": "Should have a notes object",
+    "type": "object",
+    "definitions": {
+        "uuid": {
+			"type": "string",
+			"pattern": "^[a-fA-F0-9]{8}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{12}$"
+        }
+    },
+    "properties": {
+        "timestamp": { "$ref": "../timestamp.json", "description": "When the skater is released from the box" },
+        "skater": { "$ref": "#/definitions/uuid", "description": "The skater exiting the box" },
+        "duration": { "type":"number", "minimum": 0, "description": "How long the skater actually spent in the box, in period-time seconds" },
+        "premature": { "type": "string", "enum": [ "official","skater","rescinded","mistake" ], "description": "If the skater left early, why they did so" },
+        "no-skater": { "type": "boolean", "description": "If the skater is not returning to the track at the end of the penalty (due to foul-out, expulsion, etc), this flag is true.", "default": false }
+    },
+    "required": [ "timestamp","skater" ]
+}

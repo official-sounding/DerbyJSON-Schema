@@ -1,0 +1,36 @@
+{
+    "id": "https://official-sounding.com/derbyJSON/jam-events/pass.json#",
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "title": "Pass",
+    "$comment": "This object should probably be renamed as 'Trip' so align with 2017 rules and improve clarity",
+    "description": "Represents a completed pass (either initial or scoring), or an incomplete pass at jam end",
+    "type": "object",
+    "definitions": {
+        "uuid": {
+			"type": "string",
+			"pattern": "^[a-fA-F0-9]{8}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{12}$"
+        }
+    },
+    "properties": {
+        "timestamp": { "$ref": "../timestamp.json", "description": "When the pass completed" },
+        "number": { "type": "integer", "minimum": 1 },
+        "skater": { "$ref": "#/definitions/uuid", "description": "The skater scoring the points on for the pass" },
+        "completed": { "type": "boolean", "default": true },
+        "points": { "type": "integer", "minimum": 0, "description": "The number of points scored on the pass" },
+        "ghost_points": { 
+            "$comment": "maybe rename this to ghost-points, for consistency",
+            "type": "array",
+            "items": {
+                "properties": {
+                    "skater": { "$ref": "#/definitions/uuid", "description": "The skater upon whom the ghost point was scored" },
+                    "ghost_point": { "type":"string", "enum": [ "L","J","B","P","N","O","G" ]}
+                }
+            }
+        }
+
+
+    },
+    "required": [
+        "timestamp","number"
+    ]
+}

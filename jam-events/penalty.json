@@ -1,0 +1,26 @@
+{
+    "id": "https://official-sounding.com/derbyJSON/jam-events/penalty.json#",
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "title": "Penalty",
+    "description": "Represents a penalty issued to a skater",
+    "$comment": "using a penalty object to record no-pass/no-penalty is probably incorrect.  Additionally, the rescining flag violates the otherwise 'event-driven' nature of the jam events, requiring modifying a previous event.  May want a different top-level 'Rescind Penalty' Jam Event",
+    "type": "object",
+    "definitions": {
+        "uuid": {
+			"type": "string",
+			"pattern": "^[a-fA-F0-9]{8}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{12}$"
+        }
+    },
+    "properties": {
+        "timestamp": { "$ref": "../timestamp.json", "description": "When penalty is issued" },
+        "skater": { "$ref": "#/definitions/uuid", "description": "The skater recieving the penalty" },
+        "penalty": { "type": "string", "description": "Letter code corresponding to the penalty" },
+        "severity": { "type": "string", "enum": [ "no","major","minor","expulsion"], "description": "Severity indicator" },
+        "rescinded": { "type": "boolean", "default": false, "description": "Indicates if the penalty is later removed due to officiating error or official review" },
+        "involved": { "type": "array", "items": { "$ref": "../involved.json" }, "description": "Other skaters involved in the penalty" },
+        "cue": { "type":"string", "description": "The verbal cue used with the penalty.  Used to differentiate different Illegal Procedure penalties, for example." }
+    },
+    "required": [
+        "timestamp","skater","penalty"
+    ]
+}

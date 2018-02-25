@@ -1,0 +1,30 @@
+{
+    "id": "https://official-sounding.com/derbyJSON/jam-events/lineup.json#",
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "title": "Lineup",
+    "description": "Represents the participation of a skater in the jam",
+    "$comment": "This object is very underspecified.  Per the prose in the pdf, this object can potentially be nested, and blockers are supposed to be enumerated to specific fields (eg blocker-1).  Should be more formalized/strict",
+    "type": "object",
+    "definitions": {
+        "uuid": {
+			"type": "string",
+			"pattern": "^[a-fA-F0-9]{8}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{12}$"
+        }
+    },
+    "properties": {
+        "skater": { "$ref": "#/definitions/uuid", "description": "The skater particiapting" },
+        "start_in_box": { "type": "boolean", "default": false, "description": "Whether the skater is in the penalty box at the start of the jam" },
+        "position": { 
+            "type": "string", 
+            "description": "Used if the jam was called by the official for special cases.", 
+            "enum": [
+                "jammer",
+                "pivot",
+                "blocker"
+            ] 
+        }
+    },
+    "required": [
+        "skater"
+    ]
+}

@@ -1,0 +1,29 @@
+{
+    "id": "https://official-sounding.com/derbyJSON/jam-events/enter-box.json#",
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "title": "Enter Box",
+    "$comment": "Perhaps this should be renamed 'Box Trip'?  Also substitution should probably move out as a top-level jam event (or be a property of lineups?), since this object will otherwise need to be updated",
+    "description": "Represents the moment a skater starts the penalty time.  Not specifically 'entering the box', but when they sit in the box to start a penalty",
+    "type": "object",
+    "definitions": {
+        "uuid": {
+			"type": "string",
+			"pattern": "^[a-fA-F0-9]{8}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{12}$"
+        }
+    },
+    "properties": {
+        "timestamp": { "$ref": "../timestamp.json", "description": "When the skater sits in a penalty box chair" },
+        "skater": { "$ref": "#/definitions/uuid", "description": "The skater entering the box" },
+        "duration": { "type":"number", "minimum": 0, "description": "How long the skater should be in the box, in seconds", "default": 30 },
+        "notes": { "type": "array", "items": [ { "$ref": "../note.json" } ] },
+        "substitute": { 
+            "type": "object", 
+            "properties": {
+                "skater": { "$ref": "#/definitions/uuid", "description": "The skater replacing the skater in box" },
+                "reason": { "type": "string", "enum": ["injury","foul out","expulsion"], "$comment": "needs an 'other' reason" }
+            },
+            "required": [ "skater" ]
+        }
+    },
+    "required": [ "timestamp","skater" ]
+}

@@ -1,0 +1,34 @@
+{
+    "id": "https://official-sounding.com/derbyJSON/jam-events/call.json#",
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "title": "Call",
+    "description": "Represents an end-of-jam due to a call-off by a skater or official.  Should not be present if a jam ends due to natural 2 minute conclusion",
+    "type": "object",
+    "definitions": {
+        "uuid": {
+			"type": "string",
+			"pattern": "^[a-fA-F0-9]{8}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{12}$"
+        }
+    },
+    "properties": {
+        "timestamp": { "$ref": "../timestamp.json", "description": "When the call-off occurs" },
+        "skater": { "$ref": "#/definitions/uuid", "description": "The skater calling the jam" },
+        "official": { 
+            "type": "string", 
+            "description": "Used if the jam was called by the official for special cases.", 
+            "enum": [
+                "malfunction",
+                "major",
+                "interference",
+                "debris",
+                "too many skaters",
+                "fighting",
+                "unknown",
+                "other"
+            ] 
+        }
+    },
+    "required": [
+        "timestamp"
+    ]
+}

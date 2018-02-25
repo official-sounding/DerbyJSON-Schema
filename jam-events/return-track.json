@@ -1,0 +1,19 @@
+{
+    "id": "https://official-sounding.com/derbyJSON/jam-events/return-track.json#",
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "title": "Return Track",
+    "description": "Represents the moment a skater returns to the track from the Penalty Box",
+    "type": "object",
+    "definitions": {
+        "uuid": {
+			"type": "string",
+			"pattern": "^[a-fA-F0-9]{8}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{12}$"
+        }
+    },
+    "properties": {
+        "timestamp": { "$ref": "../timestamp.json", "description": "When the skater returns to the track" },
+        "skater": { "$ref": "#/definitions/uuid", "description": "The skater returning to the track" },
+        "opposing-pass": { "type": "integer", "minimum": 0, "description": "The pass the opposing jammer is on" }
+    },
+    "required": [ "timestamp","skater" ]
+}

@@ -1,0 +1,52 @@
+{
+    "id": "https://official-sounding.com/derbyJSON/jam-events/jam-event.json#",
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "title": "Jam Event",
+    "description": "Represents one of several different types of events that can happen during a jam",
+    "$comment": "spec says that all sub events should have timestamp & skater, but then they don't all have it populated, so I have deferred those fields to where they are specified in the sub-types",
+    "type": "object",
+    "properties": {
+        "event": { 
+            "type": "string",
+            "default": "penalty", 
+            "description": "The Reason for leaving the track", 
+            "enum": [
+                "call",
+                "enter box",
+                "exit box",
+                "injury",
+                "jam event",
+                "lead",
+                "leave track",
+                "lineup",
+                "lost lead",
+                "pack lap",
+                "pass",
+                "penalty",
+                "return track",
+                "star pass",
+                "action",
+                "error"
+            ] 
+        },
+        "team": { "type": "string", "description": "The team the event occured for" }
+    },
+    "required": [ "event","team" ],
+    "oneOf": [
+        { "$ref": "call.json" },
+        { "$ref": "enter-box.json" },
+        { "$ref": "exit-box.json" },
+        { "$ref": "injury.json" },
+        { "$ref": "jam-event.json" },
+        { "$ref": "lead.json" },
+        { "$ref": "leave-track.json" },
+        { "$ref": "lineup.json" },
+        { "$ref": "lost-lead.json" },
+        { "$ref": "pack-lap.json" },
+        { "$ref": "pass.json" },
+        { "$ref": "penalty.json" },
+        { "$ref": "return-track.json" },
+        { "$ref": "star-pass.json" },
+        { "$ref": "../action-error.json" }
+    ]
+}

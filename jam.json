@@ -9,7 +9,7 @@
         "timestamp": { "$ref": "timestamp.json", "description": "When the jam started" },
         "duration": { "type": "number", "minimum": 0, "description": "Length of jam, in seconds" },
         "notes": { "type": "array", "items": { "$ref": "note.json" }, "description": "Additional notes about the jam, not related to any specific event" },
-        "events": { "type": "array", "items": { }, "description": "Events occuring during the jam, or events immediately following/preceeding the jam" }
+        "events": { "type": "array", "items": { "$ref": "jam-events/jam-event.json" }, "description": "Events occuring during the jam, or events immediately following/preceeding the jam" }
     },
     "required": [ "number" ]
 }

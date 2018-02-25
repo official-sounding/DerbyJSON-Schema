@@ -1,0 +1,18 @@
+{
+    "id": "https://official-sounding.com/derbyJSON/jam-events/pack-lap.json#",
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "title": "Pack Lap",
+
+    "description": "Represents one or more laps of the pack around the track.  Can either record each lap, or one total entry at the end of the jam",
+    "type": "object",
+    "properties": {
+        "timestamp": { "$ref": "../timestamp.json", "description": "When the lap is completed (if counted individually)" },
+        "count": { 
+            "type": "number", 
+            "minimum": 1,
+            "default": 1,
+            "description": "number of laps (or fraction of laps) recorded during the jam.  If not populated, assumed to be 1"
+        }
+    },
+    "required": [ ]
+}

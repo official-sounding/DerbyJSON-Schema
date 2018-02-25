@@ -1,0 +1,18 @@
+{
+    "id": "https://official-sounding.com/derbyJSON/jam-events/lead.json#",
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "title": "Lead",
+    "description": "Represents the moment a jammer is declared lead",
+    "type": "object",
+    "definitions": {
+        "uuid": {
+			"type": "string",
+			"pattern": "^[a-fA-F0-9]{8}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{12}$"
+        }
+    },
+    "properties": {
+        "timestamp": { "$ref": "../timestamp.json", "description": "When the jammer is declared lead" },
+        "skater": { "$ref": "#/definitions/uuid", "description": "The jammer declared lead" }
+    },
+    "required": [ "timestamp","skater" ]
+}

@@ -1,0 +1,18 @@
+{
+    "id": "https://official-sounding.com/derbyJSON/jam-events/lost-lead.json#",
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "title": "Lost Lead",
+    "description": "Represents the moment a jammer loses lead jammer status, or becomes ineligible for an available lead jammer status",
+    "type": "object",
+    "definitions": {
+        "uuid": {
+			"type": "string",
+			"pattern": "^[a-fA-F0-9]{8}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{12}$"
+        }
+    },
+    "properties": {
+        "timestamp": { "$ref": "../timestamp.json", "description": "When the jammer loses lead" },
+        "skater": { "$ref": "#/definitions/uuid", "description": "The jammer losing lead" }
+    },
+    "required": [ "timestamp","skater" ]
+}

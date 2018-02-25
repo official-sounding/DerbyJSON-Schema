@@ -74,10 +74,8 @@
 				},
 				"additionalProperties": false
 			},
-			"ruleset": {
-				"$ref": "ruleset.json"
-			},
-			"venue": {},
+			"ruleset": { "$ref": "ruleset.json" },
+			"venue": { "$ref": "venue.json" },
 			"uuid": { 
 				"type": "array", 
 				"description": "Unique identifiers for this game",
@@ -108,7 +106,17 @@
 				"description": "The hosting league, if game is at a tournament or is different from the 'home' league in teams",
 				"$ref": "#/definitions/uuid" 
 			},
-			"explusions": { "type": "array", "items": {} },
+			"explusions": { 
+				"type": "array", 
+				"items": {
+					"type": "object",
+					"properties": {
+						"skater": {  "$ref": "#/definitions/uuid", "description": "Reference to the skater that was expelled" },
+						"suspension": { "type": "boolean", "description": "The result of the suspension meeting" },
+						"notes": { "type": "array", "description": "Additional notes about the expulsion", "items": {"$ref": "note.json" } }
+					}
+				} 
+			},
 			"suspensions": { 
 				"type": "array", 
 				"description": "identifiers of any skaters served a suspension during this game",

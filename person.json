@@ -3,5 +3,31 @@
     "$schema": "http://json-schema.org/draft-07/schema#",
     "title": "Person",
     "type": "object",
-    "description": "Represents a single individual (player, official, volunteer, etc.)"
+    "description": "Represents a single individual (player, official, volunteer, etc.)",
+    "definitions": {
+        "uuid": {
+			"type": "string",
+			"pattern": "^[a-fA-F0-9]{8}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{12}$"
+        }
+    },
+    "properties": {
+        "name": { "type": "string" },
+        "number": { "type": "string", "$comment": "required if role = skater, not sure exactly how to encode this" },
+        "league": { "type": "string", "$comment": "league affiliation if role = official" },
+        "certification": { 
+            "type": "array", 
+            "items": {
+                "association": { "type": "string" },
+                "certifcation": { "type": "string" },
+                "level": { "type": "integer" },
+                "endorsement": { "type": "string" }
+            } 
+        },
+        "legal": { "type": "string" },
+        "roles": { "type": "array" },
+        "skated": { "type": "boolean", "default": true },
+        "uuids": { "type": "array", "items": { "$ref": "#/definitions/uuid" } },
+        "insurance": { "type": "string" }
+    },
+    "required": [ "name" ]
 }

@@ -1,0 +1,32 @@
+{
+    "id": "https://official-sounding.com/derbyJSON/venue.json#",
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "title": "Venue",
+    "type": "object",
+    "description": "Represents a location where roller derby is played",
+    "definitions": {
+        "uuid": {
+			"type": "string",
+			"pattern": "^[a-fA-F0-9]{8}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{12}$"
+        }
+    },
+    "$comment": "This schema is a bit too 'Falsehoods Programmers Beleive About Addresses' unfortunately. Should be radically simplified",
+    "properties": {
+        "name": { "type":"string", "description": "Name of the venue" },
+        "city": { "type": "string", "description": "City the venue is in" },
+        "state": { "type": "string", "description": "State the venue is in" },
+        "url": { "type": "string", "format": "uri" },
+        "country": { "type": "string" },
+        "email": { "type": "string" },
+        "fax": { "type": "string" },
+        "otheraddr": { "type": "string" },
+        "phone": { "type": "string" },
+        "pob": { "type": "string" },
+        "postcode": { "type": "string" },
+        "street": { "type": "string" },
+        "notes" : { "type": "array", "items": {} },
+        "uuid": { "type": "array", "items": { "$ref": "#/definitions/uuid" } },
+        "logo": { "$ref": "logo.json" }
+    },
+    "required": [ "name","city","state" ]
+}

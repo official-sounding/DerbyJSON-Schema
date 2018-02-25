@@ -65,10 +65,14 @@
 			"periods": {
 				"patternProperties": {
 					"^\\d+$": {
-
+						"timestamp": { "$ref": "timestamp.json", "description": "The start of the Period" },
+						"end": { "$ref": "timestamp.json", "description": "The end of the Period" },
+						"jams": { "type": "array" },
+						"actions": { "type": "array" },
+						"errors": { "type": "array" }
 					}
 				},
-				"additionalProperties": false,
+				"additionalProperties": false
 			},
 			"ruleset": {
 				"$ref": "ruleset.json"

@@ -64,7 +64,7 @@
 			},
 			"periods": {
 				"patternProperties": {
-					"^\\d+$": {
+					"^[1-9]\\d*$": {
 						"timestamp": { "$ref": "timestamp.json", "description": "The start of the Period" },
 						"end": { "$ref": "timestamp.json", "description": "The end of the Period" },
 						"jams": { 

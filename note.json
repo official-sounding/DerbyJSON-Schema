@@ -16,5 +16,4 @@
     },
     "description": "Represents some information that describes data that is outside of normal",
     "$ref": "#/definitions/note-structure"
-    
 }

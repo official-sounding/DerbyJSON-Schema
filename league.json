@@ -1,0 +1,15 @@
+{
+    "id": "https://official-sounding.com/derbyJSON/league.json#",
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "title": "League",
+    "description": "Represents the details of a roller derby league",
+    "typo": "object",
+    "properties": {
+        "name": { "type": "string" },
+        "abbreviation": { "type": "string", "description": "Abbreviation of the league name.  Reccomended, not globally unique" },
+        "uuid": { "type": "array", "items": { "type": "string", "uniqueItems": true }, "description": "unique identifiers for the league.", "$comment": "Even though it should, doesn't actually represent a UUID-formatted string"  },
+        "venue": { "$ref": "venue.json", "description": " The home venue of the league", "$comment": "might need to be an array to represent wftda info" },
+        "teams": { "type": "array", "items": { "$ref": "team.json" } },
+        "logo": { "$ref": "logo.json", "$comment": "may want this to be an array of logos?" }
+    }
+}

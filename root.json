@@ -68,8 +68,8 @@
 						"timestamp": { "$ref": "timestamp.json", "description": "The start of the Period" },
 						"end": { "$ref": "timestamp.json", "description": "The end of the Period" },
 						"jams": { "type": "array" },
-						"actions": { "type": "array" },
-						"errors": { "type": "array" }
+						"actions": { "type": "array", "items": { "$ref": "action-error.json" } },
+						"errors": { "type": "array", "items": { "$ref": "action-error.json" } }
 					}
 				},
 				"additionalProperties": false

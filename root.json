@@ -7,6 +7,24 @@
 		"uuid": {
 			"type": "string",
 			"pattern": "^[a-fA-F0-9]{8}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{12}$"
+		},
+		"timer": {
+			"type": "object",
+			"properties": {
+				"duration": {
+					"type": "number",
+					"description": "How long, in seconds, the timer will run before it stops",
+					"minimum": 0
+				},
+				"counts-down": {
+					"type": "boolean",
+					"description": "If 'true', the timer counts down from the duration value, otherwise it counts up"
+				},
+				"running": {
+					"type": "boolean",
+					"description": "Is the timer currently running"
+				}
+			}
 		}
 	},
 	"properties" : {
@@ -26,9 +44,18 @@
 			},
 			"type": { 
 				"type": "string",
+				"default": "game",
 				"enum": ["game","rosters","stats","leagues"]
 			 },
 			"teams": {
+				"properties": {
+					"home": { "$ref": "team.json" },
+					"away": { "$ref": "team.json" },
+					"officials": { "$ref": "team.json" }
+				},
+				"patternProperties": {
+					"^[a-fA-F0-9]{8}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{12}$": { "$ref": "team.json" }
+				},
 				"required": [
 					"home",
 					"away",
@@ -40,8 +67,8 @@
 					"^\\d+$": {
 
 					}
-				}
-
+				},
+				"additionalProperties": false,
 			},
 			"ruleset": {
 				"$ref": "ruleset.json"
@@ -49,20 +76,49 @@
 			"venue": {},
 			"uuid": { 
 				"type": "array", 
-				"items": {} 
+				"description": "Unique identifiers for this game",
+				"items": { "$ref": "#/definitions/uuid" } 
 			},
 			"notes": { "type": "array", "items": {} },
 			"date": { "type": "string", "format": "date-time"},
 			"time": { "type": "string", "format": "date-time"},
 			"end_time": { "type": "string", "format": "date-time"},
 			"leagues": { "type": "array", "items": {} },
-			"timers": {},
-			"tournament": { "type": "string"},
-			"host-league": { "$ref": "#/definitions/uuid" },
+			"timers": {
+				"description": "Defines behavior of timers during the game.  generated from the ruleset object and encodes their behavior during the game (eg counting up vs down)",
+				"properties": {
+					"countdown": { "$ref": "#/definitions/timer" },
+					"period": { "$ref": "#/definitions/timer" },
+					"halftime": { "$ref": "#/definitions/timer" },
+					"jam": { "$ref": "#/definitions/timer" },
+					"lineup": { "$ref": "#/definitions/timer" },
+					"penalty": { "$ref": "#/definitions/timer" },
+					"timeout": { "$ref": "#/definitions/timer" }
+				}
+			},
+			"tournament": { 
+				"description": "Name of the tournament that this game corresponds to",
+				"type": "string"
+			},
+			"host-league": { 
+				"description": "The hosting league, if game is at a tournament or is different from the 'home' league in teams",
+				"$ref": "#/definitions/uuid" 
+			},
 			"explusions": { "type": "array", "items": {} },
-			"suspensions": { "type": "array", "items": {} },
-			"signartues": { "type": "array", "items": {} },
-			"sanctioned": { "type": "boolean" },
-			"association": { "type": "string", "defualt": "WFTDA" }
+			"suspensions": { 
+				"type": "array", 
+				"description": "identifiers of any skaters served a suspension during this game",
+				"items": { "$ref": "#/definitions/uuid" } },
+			"signartues": { "type": "array", "items": { } },
+			"sanctioned": { 
+				"type": "boolean",
+				"description": "Is the game sanctioned",
+				"default": false
+			},
+			"association": { 
+				"type": "string", 
+				"description": "What governing body/association the game is played for. Examples include 'WFTDA', 'MRDA', 'JRDA'",
+				"defualt": "WFTDA" 
+			}
 	}
 }

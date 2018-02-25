@@ -1,0 +1,40 @@
+{
+    "id": "https://official-sounding.com/derbyJSON/timestamp.json#",
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "title": "Timestamp",
+    "type": "object",
+    "description": "Represents a single individual (player, official, volunteer, etc.)",
+    "properties": {
+        "approximate": { "type": "boolean", "default": false }
+    },
+    "oneOf": [
+        { 
+            "properties": { "wall" : { "type": "string" } },
+            "$comment": "format is HH:MM:SS.  Should instead be ISO-8601",
+            "required": [ "wall" ]
+        },
+        { 
+            "properties": { "epoch" : { "type": "number" } },
+            "required": [ "epoch" ]
+        },
+        { 
+            "properties": { "seconds" : { "type": "number" } },
+            "required": [ "seconds" ]
+        },
+        { 
+            "properties": { "period" : { "type": "string" } },
+            "$comment": "MM:SS on the period clock.  Should probably be eliminated",
+            "required": [ "period" ]
+        },
+        { 
+            "properties": { "jam" : { "type": "number" } },
+            "$comment": "number of seconds relative to the jam start.  Should probably be eliminated",
+            "required": [ "jam" ]
+        },
+        {
+            "properties": { "range": { "type":"array" } },
+            "$comment": "array of two timestamp objects.  not self-refferential because that will probably break everything",
+            "required": [ "range" ]
+        }
+    ]
+}

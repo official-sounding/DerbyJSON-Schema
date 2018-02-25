@@ -1,0 +1,25 @@
+{
+    "id": "https://official-sounding.com/derbyJSON/logo.json#",
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "title": "Logo",
+    "type": "object",
+    "description": "Represents a logo of an entity, in various sizes and styles",
+    "properties": {
+        "url": { "type": "string", "format": "uri" },
+        "small": { "type": "string", "format": "uri" },
+        "medium": { "type": "string", "format": "uri" },
+        "large": { "type": "string", "format": "uri" },
+        "url_light": { "type": "string", "format": "uri" },
+        "small_light": { "type": "string", "format": "uri" },
+        "medium_light": { "type": "string", "format": "uri" },
+        "large_light": { "type": "string", "format": "uri" },
+        "url_dark": { "type": "string", "format": "uri" },
+        "small_dark": { "type": "string", "format": "uri" },
+        "medium_dark": { "type": "string", "format": "uri" },
+        "large_dark": { "type": "string", "format": "uri" },
+        "url_grayscale": { "type": "string", "format": "uri" },
+        "small_grayscale": { "type": "string", "format": "uri" },
+        "medium_grayscale": { "type": "string", "format": "uri" },
+        "large_grayscale": { "type": "string", "format": "uri" }
+    }
+}

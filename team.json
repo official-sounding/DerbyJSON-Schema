@@ -1,0 +1,23 @@
+{
+    "id": "https://official-sounding.com/derbyJSON/team.json#",
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "title": "Team",
+    "type": "object",
+    "description": "Represents a single group within a league/game",
+    "properties": {
+        "name": { "type": "string" },
+        "abbreviation": { "type": "string" },
+        "league": { "type": "string" },
+        "level": { 
+            "type": "string", 
+            "enum": [ "All Star","B","C","Rec","Officials","Home","Adhoc" ] 
+        },
+        "date": { "type": "string", "format":"date-time" },
+        "color": { "type": "object" },
+        "logo": { "$ref": "logo.json" },
+        "persons": { "type":"array", "items": { "$ref": "person.json" } }
+    },
+    "required": [
+        "name"
+    ]
+}

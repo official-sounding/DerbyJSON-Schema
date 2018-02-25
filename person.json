@@ -1,0 +1,7 @@
+{
+    "id": "https://official-sounding.com/derbyJSON/person.json#",
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "title": "Person",
+    "type": "object",
+    "description": "Represents a single individual (player, official, volunteer, etc.)"
+}

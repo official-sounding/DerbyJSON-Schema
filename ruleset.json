@@ -1,5 +1,5 @@
 {
-    "id": "https://official-sounding.com/derbyJSON/definitions/ruleset.json#",
+    "id": "https://official-sounding.com/derbyJSON/ruleset.json#",
     "$schema": "http://json-schema.org/draft-07/schema#",
     "title": "Ruleset",
     "type": "object",

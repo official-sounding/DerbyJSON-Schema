@@ -24,7 +24,7 @@
         "pob": { "type": "string" },
         "postcode": { "type": "string" },
         "street": { "type": "string" },
-        "notes" : { "type": "array", "items": {} },
+        "notes" : { "type": "array", "items": { "$ref": "notes.json" } },
         "uuid": { "type": "array", "items": { "$ref": "#/definitions/uuid" } },
         "logo": { "$ref": "logo.json" }
     },

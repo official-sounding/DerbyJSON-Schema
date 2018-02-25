@@ -17,10 +17,13 @@
         "certification": { 
             "type": "array", 
             "items": {
-                "association": { "type": "string" },
-                "certifcation": { "type": "string" },
-                "level": { "type": "integer" },
-                "endorsement": { "type": "string" }
+                "type": "object",
+                "properties": {
+                    "association": { "type": "string" },
+                    "certifcation": { "type": "string" },
+                    "level": { "type": "integer" },
+                    "endorsement": { "type": "string" } 
+                }
             } 
         },
         "legal": { "type": "string" },

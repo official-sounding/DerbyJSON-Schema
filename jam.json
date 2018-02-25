@@ -1,0 +1,15 @@
+{
+    "id": "https://official-sounding.com/derbyJSON/jam.json#",
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "title": "Jam",
+    "description": "Represents an entire jam and all the events that happen during it.  Events that occur between jams should be attached to the relevant jams per assocaition standard practices",
+    "type": "object",
+    "properties": {
+        "number": { "type": "integer", "minimum": 1 },
+        "timestamp": { "$ref": "timestamp.json", "description": "When the jam started" },
+        "duration": { "type": "number", "minimum": 0, "description": "Length of jam, in seconds" },
+        "notes": { "type": "array", "items": { "$ref": "note.json" }, "description": "Additional notes about the jam, not related to any specific event" },
+        "events": { "type": "array", "items": { }, "description": "Events occuring during the jam, or events immediately following/preceeding the jam" }
+    },
+    "required": [ "number" ]
+}

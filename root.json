@@ -67,7 +67,16 @@
 					"^\\d+$": {
 						"timestamp": { "$ref": "timestamp.json", "description": "The start of the Period" },
 						"end": { "$ref": "timestamp.json", "description": "The end of the Period" },
-						"jams": { "type": "array" },
+						"jams": { 
+							"type": "array", 
+							"items": { 
+								"oneOf": [ 
+									{ "$ref": "jam.json" },
+									{ "$ref": "timeout.json" },
+									{ "$ref": "note.json" }
+								] 
+							}
+						},
 						"actions": { "type": "array", "items": { "$ref": "action-error.json" } },
 						"errors": { "type": "array", "items": { "$ref": "action-error.json" } }
 					}

@@ -1,0 +1,19 @@
+{
+    "id": "https://official-sounding.com/derbyJSON/timeout.json#",
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "title": "Time Out",
+    "description": "Represents any time the period clock is stopped",
+    "type": "object",
+    "properties": {
+        "team": { "type": "string", "description": "Team that requested the stoppage", "enum": ["home","away","official"] },
+        "notes": { "type": "array", "items": { "$ref": "notes.json" }, "description": "Extra description of the clock stoppage.  Does not include details of the OR" },
+        "injury": { "type": "string", "description": "When populated, indicates that the timeout was called for a skater injury." },
+        "duration": { "type": "integer", "minimum": 0, "description": "How long the clock was stopped, including lineup time after the 'end' of the timeout" },
+        "timestamp": { "$ref": "timestamp.json", "description": "When the timeout occurred" },
+        "review": { "type": "string", "description": "Description of what was requested in the review.  Only populated when a the timeout is an OR" },
+        "resolution": { "type": "string", "description": "Description of the outome of the review." },
+        "retained": { "type": "boolean", "description": "Does the team retain their review. Required if timeout is an OR" }
+    },
+    "required": [ "team" ],
+    "dependencies": { "review": ["retained"] }
+}

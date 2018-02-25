@@ -44,7 +44,7 @@
 
 			},
 			"ruleset": {
-				"$ref": "https://official-sounding.com/derbyJSON/ruleset.json"
+				"$ref": "ruleset.json"
 			},
 			"venue": {},
 			"uuid": { 

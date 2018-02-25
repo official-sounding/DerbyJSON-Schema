@@ -1,27 +1,67 @@
 { 
 	"id": "https://official-sounding.com/derbyJSON/root.json#",
-	"$schema": "http://json-schema.org/draft-04/schema#",
+	"$schema": "http://json-schema.org/draft-07/schema#",
+	"title": "DerbyJSON",
 	"type": "object",
+	"definitions": {
+		"uuid": {
+			"type": "string",
+			"pattern": "^[a-fA-F0-9]{8}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{12}$"
+		}
+	},
 	"properties" : {
-			"version" : { "type": "string" },
-			"metadata": {},
-			"type": { "type": "string" },
-			"teams": {},
-			"periods": {},
-			"ruleset": {},
+			"version" : { 
+				"type": "string",
+				"description": "The current version of the file format" 
+			},
+			"metadata": {
+				"type":"object",
+				"description": "Additional information about the file that isn't relevant to the game data itself",
+				"properties": {
+					"producer": { "type": "string" },
+					"date": { "type": "string", "format": "date-time" },
+					"author": { "type": "string" },
+					"comments": { "type": "string" }
+				}
+			},
+			"type": { 
+				"type": "string",
+				"enum": ["game","rosters","stats","leagues"]
+			 },
+			"teams": {
+				"required": [
+					"home",
+					"away",
+					"officials"
+				]
+			},
+			"periods": {
+				"patternProperties": {
+					"^\\d+$": {
+
+					}
+				}
+
+			},
+			"ruleset": {
+				"$ref": "https://official-sounding.com/derbyJSON/ruleset.json"
+			},
 			"venue": {},
-			"uuid": { "type": "array", "items": {} },
+			"uuid": { 
+				"type": "array", 
+				"items": {} 
+			},
 			"notes": { "type": "array", "items": {} },
-			"date": {},
-			"time": {},
-			"end_time": {},
-			"leagues": {},
+			"date": { "type": "string", "format": "date-time"},
+			"time": { "type": "string", "format": "date-time"},
+			"end_time": { "type": "string", "format": "date-time"},
+			"leagues": { "type": "array", "items": {} },
 			"timers": {},
 			"tournament": { "type": "string"},
-			"host-league": {},
+			"host-league": { "$ref": "#/definitions/uuid" },
 			"explusions": { "type": "array", "items": {} },
 			"suspensions": { "type": "array", "items": {} },
-			"signarues": { "type": "array", "items": {} },
+			"signartues": { "type": "array", "items": {} },
 			"sanctioned": { "type": "boolean" },
 			"association": { "type": "string", "defualt": "WFTDA" }
 	}

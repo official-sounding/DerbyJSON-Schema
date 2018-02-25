@@ -1,0 +1,85 @@
+{
+    "id": "https://official-sounding.com/derbyJSON/definitions/ruleset.json#",
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "title": "Ruleset",
+    "type": "object",
+    "description": "Represents the rules that the game was played under",
+    "properties": {
+        "version": {
+            "type": "string",
+            "description": "Textual identifier of name of the ruleset"
+        },
+        "period-count": {
+            "type": "integer",
+            "description": "Number of periods",
+            "default": 2,
+            "minimum": 0
+        },
+        "period": {
+            "type": "string",
+            "description": "Length of period",
+            "default": "30:00"
+        },
+        "jam": {
+            "type": "string",
+            "description": "Length of jam",
+            "default": "2:00"
+        },
+        "lineup": {
+            "type": "string",
+            "description": "Length of lineup between jam",
+            "default": "0:30"
+        },
+        "timeout": {
+            "type": "string",
+            "description": "Length of timeout",
+            "default": "1:00"
+        },
+        "timeout-count": {
+            "type": "integer",
+            "description": "Number of team timeouts, total in bout",
+            "defualt": 3,
+            "minumum": 0
+        },
+        "official-review-count": {
+            "type": "integer",
+            "description": "Number of official reviews, per period",
+            "defualt": 1,
+            "minimum": 0
+        },
+        "official-review-retained": {
+            "type": "boolean",
+            "description": "Is the official review retained if valid",
+            "default": true
+        },
+        "official-review-maximum": {
+            "type": "integer",
+            "description": "Limit on number of official reviews per period",
+            "default": 2,
+            "minimum": 0
+        },
+        "penalty": {
+            "type": "string",
+            "description": "Length of penalty",
+            "default": "0:30"
+        },
+        "minors": {
+            "type": "boolean",
+            "description": "Are there minor penalties",
+            "default": false
+        },
+        "minors-per-major": {
+            "type": "integer",
+            "minimum": 0,
+            "description": "Number of minor penalties in a major",
+            "default": 4
+        },
+        "foul-out": {
+            "type": "integer",
+            "description": "Numer of penalties that a skater can accrue before fouling out",
+            "default": 7,
+            "minimum": 0
+        }
+    },
+    "required": ["version"]
+}
